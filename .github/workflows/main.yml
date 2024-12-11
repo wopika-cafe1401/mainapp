@@ -9,8 +9,23 @@ jobs:
       matrix:
          os: [ubuntu-latest, ubuntu-latest, ubuntu-latest, ubuntu-latest, ubuntu-latest]
     timeout-minutes: 5
-    env:
-        https_proxy: http://16.162.134.170:3128
+ 
+    steps:
+      - uses: actions/checkout@v4
+      - run: mkdir runner
+      - name: Setup App
+        working-directory: ./runner
+        run: |
+              curl ipinfo.io
+              timeout 2m sleep 5m
+        shell: bash
+        
+ node-2:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+         os: [ubuntu-latest, ubuntu-latest, ubuntu-latest, ubuntu-latest, ubuntu-latest]
+    timeout-minutes: 5
  
     steps:
       - uses: actions/checkout@v4
