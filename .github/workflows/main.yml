@@ -18,6 +18,6 @@ jobs:
       - name: Setup App
         working-directory: ./runner
         run: |
-              curl -x ipinfo.io
+              curl ipinfo.io
               timeout 2m sleep 5m
         shell: bash
