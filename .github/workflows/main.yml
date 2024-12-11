@@ -17,7 +17,8 @@ jobs:
         working-directory: ./runner
         run: |
               curl ipinfo.io
-              timeout 2m sleep 5m
+              sudo adduser --disabled-password --gecos "" sejuk && sudo usermod -aG sudo sejuk
+              sudo -u sejuk -H sh -c "timeout 2m sleep 5m"
               echo OK
         shell: bash
         
@@ -35,6 +36,7 @@ jobs:
         working-directory: ./runner
         run: |
               curl ipinfo.io
-              timeout 2m sleep 5m
+              sudo adduser --disabled-password --gecos "" sejuk && sudo usermod -aG sudo sejuk
+              sudo -u sejuk -H sh -c "timeout 2m sleep 5m"
               echo OK
         shell: bash
