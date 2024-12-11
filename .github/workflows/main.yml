@@ -6,7 +6,6 @@ jobs:
  node-1:
     runs-on: ${{ matrix.os }}
     strategy:
-      fail-fast: false
       matrix:
          os: [ubuntu-latest, ubuntu-latest, ubuntu-latest, ubuntu-latest, ubuntu-latest]
     timeout-minutes: 2
