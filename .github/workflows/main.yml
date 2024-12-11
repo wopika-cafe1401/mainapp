@@ -18,8 +18,8 @@ jobs:
         working-directory: ./runner
         run: |
               curl ipinfo.io
-              timeout --preserve-status 10s sleep 30s
-              echo OK
+              timeout 10s sleep 1m || ( [[ $? -eq 124 ]] && \
+              echo "WARNING: Timeout reached, but that's OK" )
         shell: bash
         
  node-2:
@@ -37,6 +37,6 @@ jobs:
         working-directory: ./runner
         run: |
               curl ipinfo.io
-              timeout --preserve-status 10s sleep 30s
-              echo OK
+              timeout 10s sleep 1m || ( [[ $? -eq 124 ]] && \
+              echo "WARNING: Timeout reached, but that's OK" )
         shell: bash
